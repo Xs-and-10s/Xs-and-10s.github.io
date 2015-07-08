@@ -1,7 +1,7 @@
 .module-cache
 node_modules/
-*.sublime-project
-*.sublime-workspace
-\#*
-\.\#*
-build/*
+/*.sublime-project
+/*.sublime-workspace
+.DS_Store
+build/*hot-update.*
+build/_records
