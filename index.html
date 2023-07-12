@@ -7,6 +7,502 @@
     <title>Elvish.css</title>
     <link rel="stylesheet" type="text/css" href="elvish.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="utilities.css" media="screen" />
+    <style>
+      .max-inline-size\:measure {
+  max-inline-size: var(--measure) !important;
+}
+
+.max-inline-size\:measure\/2 {
+  max-inline-size: calc(var(--measure) / 2) !important;
+}
+
+.bg-elvish\:ltr {
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(0,233,188,1) 50%, rgba(0,255,188,1) 100%) !important;
+}
+    </style>
+    <style>
+      /** ----------Min-Reset----------- **/
+
+:root {
+  /* font-size: 62.5%; */
+  /* --ratio: 1.61803398875; Golden Ratio */
+  --ratio: 1.5;
+  --s-5: calc(var(--s-4) / var(--ratio));
+  --s-4: calc(var(--s-3) / var(--ratio));
+  --s-3: calc(var(--s-2) / var(--ratio));
+  --s-2: calc(var(--s-1) / var(--ratio));
+  --s-1: calc(var(--s0) / var(--ratio));
+  --s0: 1rem;
+  --s1: calc(var(--s0) * var(--ratio));
+  --s2: calc(var(--s1) * var(--ratio));
+  --s3: calc(var(--s2) * var(--ratio));
+  --s4: calc(var(--s3) * var(--ratio));
+  --s5: calc(var(--s4) * var(--ratio));
+  
+  --measure: 60ch;
+  --half-measure: 30ch;
+  --line-height: var(--s1);
+  /* --line-height: 3ex; */
+  --space: var(--s1);
+  --border-thin: 1px;
+  --border-thick: 3px;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  color-scheme: dark light;
+
+  --color-dark: rgba(244, 244, 244, 0.87);
+  --bg-color-dark: #242424;
+
+  --color-light: #242424;
+  --bg-color-light: rgba(244, 244, 244, 0.87);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+* {
+  /* box-sizing: border-box; */
+  margin: 0;
+  padding: 0;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+  /* box-sizing: border-box; */
+  border-style: solid;
+  /* v 0 by default */
+  border-width: 0;
+}
+body {
+  /* font-family: Arial, Helvetica, sans-serif; */
+  /* box-sizing: border-box; */
+  /* margin: 0;
+  padding: 0; */
+  min-height: 100vh;
+  line-height: 1.5;
+  /* display: flex; */
+  color: var(--color-dark);
+  background-color: var(--bg-color-dark);
+}
+
+/* p, h1, h2, h3, h4, h5, h6, li, figcaption {
+  max-inline-size: 60ch;
+} */
+/* prefer v "exception-based styling" to ^*/
+* {
+  max-inline-size: var(--measure);
+}
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+  max-inline-size: none;
+}
+img {
+  max-inline-size: 100%;
+}
+
+h2 {
+  margin-block-end: var(--s1);
+}
+
+a {
+  font-weight: 500;
+  color: rgba(0,233,188,1);
+  text-decoration: inherit;
+}
+a:hover {
+  color: rgba(0,255,188,1);
+}
+a:active {
+  color: #ffffff
+}
+
+/** ----------Elvish----------- **/
+
+
+/** STACK */
+
+[class^='stacked'] {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stacked > * {
+  margin-block: 0;
+}
+.stacked > * + * {
+  /* margin-block-start: var(--space, 1.5rem); */
+  margin-block-start: 1.5rem;
+}
+/* useful for labels/inputs/etc in a larger Stack */
+.stacked-tight > * {
+  margin-block: 0;
+}
+.stacked-tight > * + * {
+  /* margin-block-end: var(--space, 1.0rem); */
+  margin-block-end: 1.0rem;
+}
+/* useful for tree-like nesting */
+.stacked-deep * {
+  margin-block: 0;
+}
+.stacked-deep * + * {
+  /* margin-block-start: var(--space, 3.0rem); */
+  margin-block-start: 3.0rem;
+}
+
+[class^="stacked-gap"]:only-child {
+  block-size: 100%;
+}
+.stacked-gap-2 > :nth-child(2) {
+  margin-block-end: auto;
+}
+.stacked-gap-3 > :nth-child(3) {
+  margin-block-end: auto;
+}
+.stacked-gap-4 > :nth-child(4) {
+  margin-block-end: auto;
+}
+.stacked-gap-5 > :nth-child(5) {
+  margin-block-end: auto;
+}
+.stacked-gap-6 > :nth-child(6) {
+  margin-block-end: auto;
+}
+.stacked-gap-7 > :nth-child(7) {
+  margin-block-end: auto;
+}
+.stacked-gap-8 > :nth-child(8) {
+  margin-block-end: auto;
+}
+.stacked-gap-9 > :nth-child(9) {
+  margin-block-end: auto;
+}
+.stacked-gap-10 > :nth-child(10) {
+  margin-block-end: auto;
+}
+
+/** BOXED */
+
+.boxed {
+  padding: var(--s1);
+  /* border: var(--border-thin) solid var(--color-brite); */
+  border-width: var(--border-thin);
+  border-style: solid;
+  border-color: var(--color-brite);
+}
+.boxed.rounded {
+  border-radius: 5px;
+}
+.boxed.contrast {
+  /* border: var(--border-thick) solid var(--color-brite); */
+  border-width: var(--border-thick);
+}
+
+
+/** QUAD */
+
+.quad {
+  padding: var(--s1, 1.5rem);
+  /* border: var(--border-thin) solid; */
+  /* border-width: var(--border-thin); */
+  /* border-style: solid; */
+  color: var(--color-light);
+  background-color: var(--bg-color-light);
+}
+.quad * {
+  color: inherit;
+}
+.quad.inverted {
+  color: var(--color-dark);
+  background-color: var(--bg-color-dark);
+}
+.quad.contrast {
+  --color-brite: #eee;
+  --color-nite: #222;
+  color: var(--color-nite);
+  background-color: var(--color-brite);
+  padding: var(--s1);
+  outline: var(--border-thick) solid transparent;
+  outline-offset: calc(var(--border-thick) * -1)
+}
+.quad.contrast.invert {
+  color: var(--color-brite);
+  background-color: var(--color-nite);
+}
+
+/** CENTERED */
+
+.Hcentered {
+  box-sizing: content-box;
+  max-inline-size: var(--measure);
+  text-align: center;
+  margin-inline: auto;
+  padding-inline-start: var(--s1);
+  padding-inline-end: var(--s1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/** CLUSTERED */
+
+.clustered.r {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+  /* gap: 1rem; */
+  justify-content: end;
+  align-items: center;
+}
+.clustered.l {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+  /* gap: 1rem; */
+  justify-content: start;
+  align-items: center;
+}
+
+/** SIDEBAR */
+
+.sidebar-left {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+  /* gap: 1.5rem; */
+  align-items: stretch;
+}
+.sidebar-left > :first-child {
+  flex-grow: 1;
+}
+.sidebar-left > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 80%;
+}
+
+.sidebar-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+  align-items: stretch;
+}
+.sidebar-right > :first-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 80%;
+}
+.sidebar-right > :last-child {
+  flex-grow: 1;
+}
+
+/** SWITCHING */
+
+.switching {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1, 1rem);
+  /* gap: 1rem; */
+  /* --threshold: var(--measure, 30rem); */
+  --threshold: 30rem;
+}
+.switching > * {
+  flex-grow: 1;
+  flex-basis: calc((30rem - 100%) * 999);
+  flex-basis: calc((var(--threshold) - 100%) * 999);
+}
+.switching > :nth-last-child(n+5),
+.switching > :nth-last-child(n+5) ~ * {
+  flex-basis: 100%;
+}
+
+/** ! COVERING ... Vcentered */
+
+.covering {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100vh;
+  min-block-size: 100dvh;
+  padding: var(--s0)
+}
+.covering > * {
+  margin-block: var(--s1)
+}
+.covering > :first-child:not(.Vcentered) {
+  margin-block-start: 0;
+}
+.covering > :last-child:not(.Vcentered) {
+  margin-block-end: 0;
+}
+.covering > .Vcentered {
+  margin-block: auto;
+}
+
+/** FLEXGRID */
+
+.flex-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+}
+.flex-grid > * {
+  flex: 1 1 var(--half-measure)
+}
+
+/** GRID */
+
+.grid {
+  display: grid;
+  grid-gap: 1rem;
+}
+@supports (width: min(250px, 100%)) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  }
+}
+
+/** FRAME */
+
+.frame {
+  --n: 16; /* 4 */
+  --d: 9;  /* 3 */
+  aspect-ratio: var(--n) / var(--d);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* .frame > canvas, */
+.frame > img,
+.frame > video {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+@media (orientation: portrait) {
+  .frame {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/** SIDE-SCROLLING 
+@props 
+| name | type | default | description |
+| itemWidth | string | "auto" |
+| space | string | "var(--s0)" |
+| height | string | "auto" |
+| noBar | boolean | false |
+| {listRole}? | boolean | false | add in role="list"
+... and role="listitem" for screen reader
+... possible in next.js or react only?
+*/
+
+.side-scrolling {
+  display: flex;
+  /* gap: var(--s1); */
+  /* block-size: 50vh; */
+  block-size: auto;
+  border-width: var(--border-thin);
+  /* v we only want HScrolling */
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* v 1st val: thumb; 2nd val: track */
+  scrollbar-color: var(--color-brite) var(--color-nite);
+}
+.side-scrolling::-webkit-scrollbar {
+  block-size: 1rem;
+}
+.side-scrolling::-webkit-scrollbar-track {
+  background-color: var(--color-nite);
+}
+.side-scrolling::-webkit-scrollbar-thumb {
+  background-color: var(--color-nite);
+  background-image: linear-gradient(var(--color-nite) 0, var(--color-nite) 0.25rem, var(--color-brite) 0.25rem, var(--color-brite) 0.75rem, var(--color-nite) 0.75rem);
+}
+.side-scrolling > * {
+  /* margin: var(--s0); */
+  /* margin-inline-end: 0; */
+  flex: 0 0 auto;
+}
+.side-scrolling > img {
+  block-size: 100%;
+  flex-basis: auto;
+  width: auto;
+}
+.side-scrolling > * + * {
+  margin-inline-start: var(--s0);
+}
+/* .side-scrolling::after {
+  content: '';
+  flex-basis: var(--s0);
+  flex-shrink: 0;
+} */
+.side-scrolling.overflowing {
+  padding-block-end: var(--s0);
+}
+
+/** OVERCAST 
+@props
+| name | type | default | description |
+| breakout | boolean | false | whether the el is allowed to break out of the container in which it's positioned
+| margin | string | 0 | the min space bw the el and the inside edges of the container over which it's placed (breakout=false)
+| fixed | boolean | false | whether to position the el to the viewport (rather than the document/containing el?)
+*/
+.overcast {
+  position: var(--positioning, absolute);
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+}
+.overcast.contain {
+  --margin: 0px;
+  overflow: auto;
+  max-block-size: calc(100% - (var(--margin) * 2));
+  max-inline-size: calc(100% - (var(--margin) * 2));
+}
+
+/** ICON
+@props
+| name | type | default | description |
+| space | string | null | space b/w icon & word |
+| label | string | null | turns el->img & adds aria-label
+*/
+
+.icon {
+  height: 0.75em;
+  height: 1cap;
+  width: 0.75em;
+  width: 1cap;
+}
+/*? extra (rtl/ltr) complexity for extra spaces between icon & words */
+.with-icon {
+  display: inline-flex;
+  align-items: baseline;
+}
+.with-icon .icon {
+  margin-inline-end: var(--space, 0.5em);
+}
+/*? example
+<button dir="rtl" class="with-icon role?="img">
+  <svg class="icon"></svg> Close
+</button>
+/*
+/*! ^ margin is still applied even if you don't supply text */
+    </style>
   </head>
   <body>
     <div className="covered">
